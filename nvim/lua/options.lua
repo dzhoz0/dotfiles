@@ -1,10 +1,15 @@
+
 -- clipboard
 vim.opt.clipboard = "unnamedplus"
+vim.g.mapleader = " "
+vim.opt.wrap = false
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+vim.opt.cmdheight  = 1
 
 -- stuff
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 vim.opt.mouse = 'a'
-
 
 --Tab
 vim.opt.tabstop = 4
