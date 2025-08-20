@@ -6,4 +6,4 @@ Some additional programs used here:
 + swaybg
 + kanshi
 
-Background pictures are from [](https://x.com/Stuffing_Scone)
+Background pictures are from [@Stuffing_Scone](https://x.com/Stuffing_Scone)
