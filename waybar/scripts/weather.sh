@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+curl -s wttr.in/thrissur?format="%t+%c\n" | xargs
