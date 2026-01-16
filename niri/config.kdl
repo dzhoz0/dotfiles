@@ -89,6 +89,11 @@ input {
     position x=1280 y=0
 }
 
+cursor {
+    hide-when-typing
+    hide-after-inactive-ms 5000
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
@@ -239,6 +244,8 @@ layout {
     }
 }
 
+prefer-no-csd
+
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
@@ -249,10 +256,10 @@ spawn-at-startup "waybar"
 spawn-at-startup "swaybg --image ~/.config/backgrounds/main_bg.png --mode fill"
 
 // Xwayland handler
-spawn-at-startup "xwayland-satellite"
-environment {
-    DISPLAY ":0"
-}
+// spawn-at-startup "xwayland-satellite"
+// environment {
+//     DISPLAY ":0"
+// }
 
 // Start fcitx
 spawn-at-startup "fcitx5"
@@ -329,12 +336,53 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+    draw-border-with-background false
+    // focus-ring {
+    //     off
+    // }
     // opacity 0.8
 }
 
 window-rule {
     match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
     default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+window-rule {
+    // match is-focused=true
+    match app-id="kitty"
+    opacity 0.9
+}
+
+window-rule {
+    match is-focused=false
+    opacity 0.7
+}
+
+recent-windows {
+    // off
+    debounce-ms 750
+
+    open-delay-ms 150
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 30
+        corner-radius 0
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+        Alt+grave       { next-window     filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
 }
 
 binds {
@@ -350,9 +398,6 @@ binds {
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
-
-    Alt+Tab repeat=false { spawn "gdbus" "call" "--session" "--dest" "io.github.isaksamsten.Niriswitcher" "--object-path" "/io/github/isaksamsten/Niriswitcher" "--method" "io.github.isaksamsten.Niriswitcher.application" ; }
-    Alt+Shift+Tab repeat=false { spawn "gdbus" "call" "--session" "--dest" "io.github.isaksamsten.Niriswitcher" "--object-path" "/io/github/isaksamsten/Niriswitcher" "--method" "io.github.isaksamsten.Niriswitcher.application" ; }
 
 
     Mod+Shift+Slash { show-hotkey-overlay; }
@@ -598,4 +643,3 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
-
