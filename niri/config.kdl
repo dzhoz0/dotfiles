@@ -253,7 +253,9 @@ prefer-no-csd
 // This line starts waybar, a commonly used bar for Wayland compositors.
 
 spawn-at-startup "waybar"
-spawn-at-startup "swaybg --image ~/.config/backgrounds/main_bg.png --mode fill"
+
+spawn-at-startup "swww-daemon"
+spawn-at-startup "swww img /home/dzhoz0/.config/backgrounds/main_bg.png --mode fill"
 
 // Xwayland handler
 // spawn-at-startup "xwayland-satellite"
@@ -265,7 +267,7 @@ spawn-at-startup "swaybg --image ~/.config/backgrounds/main_bg.png --mode fill"
 spawn-at-startup "fcitx5"
 
 // Spawn kde polkit agent
-spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 spawn-at-startup "kanshi"
 

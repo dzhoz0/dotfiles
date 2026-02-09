@@ -61,3 +61,18 @@ cmp.setup({
     end,
   },
 })
+
+vim.diagnostic.config({
+  virtual_text = {
+    enabled = true,
+    prefix = "",
+    spacing = 2,
+  },
+  signs = true,
+  underline = true,
+  float = {
+    border = "rounded",
+    source = "always",
+  },
+})
+
