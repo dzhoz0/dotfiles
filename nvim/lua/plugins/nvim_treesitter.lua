@@ -7,7 +7,6 @@ return {
                 ensure_installed = {"cpp", "javascript"},
                 sync_install = false,
                 highlight = {enable = true},
-                indent = { enable = true},
             })
         end
 }
