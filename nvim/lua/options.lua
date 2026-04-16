@@ -7,6 +7,24 @@ vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.cmdheight  = 1
 
+-- suport WSL
+local is_wsl = vim.fn.has("wsl") == 1
+
+if is_wsl then
+  vim.g.clipboard = {
+    name = "WslClipboard",
+    copy = {
+      ["+"] = "clip.exe",
+      ["*"] = "clip.exe",
+    },
+    paste = {
+      ["+"] = "powershell.exe -c [Console]::Out.Write((Get-Clipboard -Raw).ToString())",
+      ["*"] = "powershell.exe -c [Console]::Out.Write((Get-Clipboard -Raw).ToString())",
+    },
+    cache_enabled = 0,
+  }
+end
+
 -- stuff
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 vim.opt.mouse = 'a'
