@@ -4,7 +4,7 @@ return {
         config = function () 
             local configs = require('nvim-treesitter.configs')
             configs.setup({
-                ensure_installed = {"cpp", "javascript"},
+                ensure_installed = {"cpp", "javascript", "python"},
                 sync_install = false,
                 highlight = {enable = true},
             })
